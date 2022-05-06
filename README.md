@@ -1,73 +1,159 @@
+<h1 align="center">
+  <img alt="Logo" src="https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/static/home/thespacedevs/images/round_logo.svg" width="200px">
+</h1>
+
+<h3 align="center">
+    Space Flight News API
+</h3>
+
+<p align="center">Back-end Developer Challenge | Coodesh</p>
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lrocha09/space-flight-news-challenge-api?color=077DF2">
+
+  <a href="https://github.com/lrocha09" target="_blank" rel="noopener noreferrer">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-lucas%20rocha-077DF2">
+  </a>
+
+   <img alt="Repository size" src="https://img.shields.io/github/repo-size/lrocha09/space-flight-news-challenge-api?color=077DF2">
+
+  <a href="https://github.com/lrocha09/space-flight-news-challenge-api/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lrocha09/space-flight-news-challenge-api?color=077DF2">
+  </a>
+
+  <a href="https://github.com/lrocha09/space-flight-news-challenge-api/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/lrocha09/space-flight-news-challenge-api?color=077DF2">
+  </a>
+
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">
+  <a href="#descrição-do-projeto">Descrição do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#executando-o-projeto">Executando o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#variáveis-de-ambiente">Variáveis de Ambiente</a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição do Projeto
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Desafio Coodesh
 
-## Installation
+## Tecnologias
+
+Tecnologias utilizadas para o desenvolvimeno da API:
+
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [NestJS](https://nestjs.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [MongoDB](https://www.mongodb.com/pt-br/)
+- [Npm](https://www.npmjs.com/)
+- [Swagger](https://swagger.io/)
+- [Axios](https://axios-http.com/)
+- [Bull](https://github.com/OptimalBits/bull/)
+- [Redis](https://redis.io/)
+- [Node Cron](https://github.com/kelektiv/node-cron/)
+- [Jest](https://jestjs.io/)
+- [SuperTest](https://www.npmjs.com/package/supertest/)
+- [Uuid v4](https://github.com/thenativeweb/uuidv4/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+
+## Executando o Projeto
+
+### Requisitos Necessários
+
+- [Node.js](https://nodejs.org/en/)
+- [Npm](https://www.npmjs.com/) ou [Yarn](https://classic.yarnpkg.com/)
+- Ter [MongoDB](https://www.mongodb.com/pt-br) e [Redis](https://redis.io/) instalados em sua máquina
+
+> Obs.: Recomendado utilizar o docker, as configurações para conexão estão no arquivo `.env`
+
+**Clone o projeto e acesse a pasta**
 
 ```bash
-$ npm install
+$ git clone https://github.com/lrocha09/space-flight-news-challenge-api.git && cd space-flight-news-challenge-api
 ```
 
-## Running the app
+**Para utilizar o docker com as configurações do arquivo "docker-compose.yml"**
 
 ```bash
-# development
+$ make up
+
+$ make down
+
+$ make logs
+```
+
+**Siga os passos abaixo**
+
+```bash
+# Instale todas as dependências necessárias:
+$ npm install
+
+# Para iniciar o servidor da API:
 $ npm run start
 
-# watch mode
+# Caso queira iniciar o servidor da API em modo assistido:
 $ npm run start:dev
 
-# production mode
+# Para iniciar o servidor da API em produção:
 $ npm run start:prod
+
+# Após isso, o projeto pode ser inicializado e os endpoints estarão prontos para ser utilizados!
 ```
 
-## Test
+**Comandos para executar testes**
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
+# Para executar testes de todos os endpoints:
 $ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
+# Para executar um teste específico do projeto:
+$ npm run test:e2e "nome do arquivo"
 ```
 
-## Support
+### Documentação da API
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Para ter acesso a documentação do projeto, contendo todas as informações para utilizar os
+endpoints da API, é necessário utilizar como no exemplo abaixo, lembrando que o servidor
+da API necessita estar inicializado.
 
-## Stay in touch
+> Obs.: É possível alterar o padrão de rota "/docs" para algum desejado, para isso temos a variável de ambiente "APP_DOCS_PATH".
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+# Documentação swagger.
+Ex.: http://localhost:3000/docs ou http://www.dominio-api.com/docs
+```
 
-## License
+## Variáveis de Ambiente 
 
-Nest is [MIT licensed](LICENSE).
+**Variáveis de ambiente presentes no .env do projeto**
+
+```bash
+# Porta que o servidor do nodejs utilizará.
+SERVER_PORT=3333
+
+# URL de acesso ao banco de dados do mongodb.
+DB_URL=[Mongodb url]
+
+# REDIS CONFIGS #
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASS=[Redis password]
+
+# Variáveis para configuração de documentação do Swagger.
+APP_EXPOSE_DOCS=true
+APP_NAME=Space Flight News API
+APP_VERSION=1.0
+APP_DOCS_PATH=docs
+
+# Url base para efetuar consultas a api da Spaceflight News
+BASE_URL_SPACEFLIGHT=https://api.spaceflightnewsapi.net/v3
+```
+
+---
+
+Projeto Desenvolvido por [Lucas Rocha](linkedin.com/in/lrocha09/) 👨🏾‍💻.
+
+> This is a challenge by [Coodesh](https://coodesh.com/)
