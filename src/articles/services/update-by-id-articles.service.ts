@@ -19,21 +19,27 @@ export class UpdateByIdArticlesService {
     id: string,
     updateArticleDto: UpdateArticleDto,
   ): Promise<ArticleDocument> {
-    this.isValidateId(id);
+    this.validateId(id);
 
     const updatedArticle = await this.articlesRepository.updateById(
       id,
       updateArticleDto,
     );
 
-    if (!updatedArticle) {
-      throw new NotFoundException('Artigo não encontrado na base de dados.');
-    }
+    this.validateArticleUpdate(updatedArticle);
 
     return updatedArticle;
   }
 
-  private isValidateId(id: string): void {
+  private validateArticleUpdate(updatedArticle: ArticleDocument) {
+    if (!updatedArticle) {
+      throw new NotFoundException('Artigo não encontrado na base de dados.');
+    }
+  }
+
+  // Mais uma vez duplicação do código. Digamos que eu precise mudar a mensagem ou o tipo de Exception estourada
+  // Seria necessário alterar em 3 pontos, ou seja, acoplamento
+  private validateId(id: string): void {
     if (!this.uuidUtil.validate(id)) {
       throw new BadRequestException('Identificador inválido.');
     }

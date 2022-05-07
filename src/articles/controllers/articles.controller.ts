@@ -23,6 +23,7 @@ import { ApiPutArticles } from '../../swagger/decorators/api-put-articles.decora
 import { ApiDeleteArticles } from '../../swagger/decorators/api-delete-articles.decorator';
 import { ArticleDocument } from '../schemas/article.schema';
 
+// Eu exportaria essa tipagem para um arquivo especifico para deixar nesse arquivo apenas a implementação do controler
 type RemoveResult = {
   message: string;
 };
@@ -33,6 +34,7 @@ export class ArticlesController {
   constructor(
     private readonly createArticlesService: CreateArticlesService,
     private readonly findAllArticlesService: FindAllArticlesService,
+    // Acredito que o correto seria findArticleByIdService, mas vi q você usou uma padronização
     private readonly findByIdArticlesService: FindByIdArticlesService,
     private readonly updateByIdArticlesService: UpdateByIdArticlesService,
     private readonly removeByIdArticlesService: RemoveByIdArticlesService,
@@ -54,6 +56,8 @@ export class ArticlesController {
     @Query('page') page: number,
     @Query('pageSize') pageSize: number,
   ): Promise<ArticleDocument[]> {
+    // O que significa esse +page e +pageSize, imagino que seja para incrementar 1
+    // Mas gerou dúvida, eu criaria uma função para deixar mais explicito
     return this.findAllArticlesService.execute(+page, +pageSize);
   }
 

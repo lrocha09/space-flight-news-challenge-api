@@ -42,14 +42,16 @@ export class SynchronizeArticlesService {
     articles.forEach(async (item) => {
       const itemTransformed = this.transformExternalArticlesBody(item);
 
-      const isArticle = await this.checkArticleExists(item.id);
+      const articleExists = await this.checkArticleExists(item.id);
 
-      if (!isArticle) {
+      if (!articleExists) {
         await this.articlesRepository.create(itemTransformed);
       }
     });
   }
 
+  // Que transformação está sendo feita? Este nome está genérico, sem agregar valor na leitura, é necessário
+  // abrir o método para pensar no que ele está fazendo
   private transformExternalArticlesBody(
     articles: CreateArticleDto,
   ): ArticlesTransformed {
@@ -63,6 +65,6 @@ export class SynchronizeArticlesService {
   private async checkArticleExists(externalId: string): Promise<boolean> {
     const article = await this.articlesRepository.findByExternalId(externalId);
 
-    return article ? true : false;
+    return Boolean(article);
   }
 }

@@ -3,6 +3,7 @@ import { CreateArticleDto } from '../dtos/create-article.dto';
 import { UpdateArticleDto } from '../dtos/update-article.dto';
 import { IRemoveResponse } from '../../common/interfaces/remove-response.interface';
 
+// Acredito que o nome correto fosse IArticlesRepository
 export interface IClinicsRepository {
   create(createArticleDto: CreateArticleDto): Promise<ArticleDocument>;
   findAll(fields?: string): Promise<ArticleDocument[]>;

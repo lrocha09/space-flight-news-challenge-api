@@ -12,6 +12,8 @@ export class JobsService {
     private readonly synchronizeArticles: Queue,
   ) {}
 
+  // O que significa '0 9 * * *'? Extrair esta string para uma constante dizendo com palavras a frequência que ela representa
+  // Isso impedirá que no futuro você precise ir na documentação do cron para decifrar o sifnificado deste código
   @Cron('0 9 * * *', {
     name: 'JobsService',
     timeZone: 'America/Bahia',
