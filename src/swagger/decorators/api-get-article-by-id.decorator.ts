@@ -1,9 +1,9 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
-import { ArticleResponseDto } from '../../swagger/dtos/article-response-model.dto';
-import { ErrorMessageResponseDto } from '../../swagger/dtos/error-message-response-model.dto';
+import { ArticleResponseDto } from '../dtos/article-response-model.dto';
+import { ErrorMessageResponseDto } from '../dtos/error-message-response-model.dto';
 
-export function ApiGetByIdArticles() {
+export function ApiGetArticleById() {
   return applyDecorators(
     ApiParam({
       name: 'id',
