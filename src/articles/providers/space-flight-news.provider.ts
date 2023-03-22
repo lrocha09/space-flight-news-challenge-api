@@ -6,6 +6,7 @@ import {
   Injectable,
   NotFoundException,
   UnprocessableEntityException,
+  HttpStatus,
 } from '@nestjs/common';
 import { AxiosRequestsProvider } from '../../common/providers/axios-requests.provider';
 
@@ -14,24 +15,62 @@ export class SpaceFlightNewsProvider implements ISpaceFlightNewsProvider {
   constructor(private readonly axiosRequestsProvider: AxiosRequestsProvider) {}
 
   async findArticlesCount(): Promise<number> {
-    const result = this.axiosRequestsProvider
-      .get(`${process.env.BASE_URL_SPACEFLIGHT}/articles/count`, {
-        accept: 'application/json',
-      })
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        this.handleErrors(error);
-      });
+    try {
+      const { data: artitclesCount } = await this.axiosRequestsProvider.get(
+        this.getArticlesCountUrl(),
+        {
+          accept: 'application/json',
+        },
+      );
 
-    return await result;
+      return artitclesCount;
+    } catch (error) {
+      this.handleErrors(error);
+    }
   }
 
   async findArticles(
     limit?: number,
     sortBy?: string,
   ): Promise<CreateArticleDto[]> {
+    const params = this.getFindArticlesParams(limit, sortBy);
+
+    try {
+      const { data: articles } = await this.axiosRequestsProvider.get(
+        this.getArticlesBaseUrl(),
+        {
+          accept: 'application/json',
+        },
+        params,
+      );
+
+      return articles;
+    } catch (error) {
+      this.handleErrors(error);
+    }
+  }
+
+  private handleErrors(error: any): void {
+    const { statusCode, message } = error.response.data;
+
+    if (statusCode == HttpStatus.BAD_REQUEST)
+      throw new BadRequestException(message);
+    if (statusCode == HttpStatus.FORBIDDEN)
+      throw new ForbiddenException(message);
+    if (statusCode == HttpStatus.NOT_FOUND)
+      throw new NotFoundException(message);
+    throw new UnprocessableEntityException(message);
+  }
+
+  private getArticlesCountUrl(): string {
+    return `${this.getArticlesBaseUrl()}/count`;
+  }
+
+  private getArticlesBaseUrl(): string {
+    return `${process.env.BASE_URL_SPACEFLIGHT}/articles`;
+  }
+
+  private getFindArticlesParams(limit?: number, sortBy?: string) {
     const filterLimit = limit && {
       _limit: limit,
     };
@@ -45,30 +84,6 @@ export class SpaceFlightNewsProvider implements ISpaceFlightNewsProvider {
       ...filterSortBy,
     };
 
-    const result = this.axiosRequestsProvider
-      .get(
-        `${process.env.BASE_URL_SPACEFLIGHT}/articles`,
-        {
-          accept: 'application/json',
-        },
-        params,
-      )
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        this.handleErrors(error);
-      });
-
-    return await result;
-  }
-
-  private handleErrors(error: any): void {
-    const { statusCode, message } = error.response.data;
-
-    if (statusCode == 400) throw new BadRequestException(message);
-    if (statusCode == 403) throw new ForbiddenException(message);
-    if (statusCode == 404) throw new NotFoundException(message);
-    throw new UnprocessableEntityException(message);
+    return params;
   }
 }
