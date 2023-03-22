@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { CreateArticlesService } from './services/create-articles.service';
-import { FindAllArticlesService } from './services/find-all-articles.service';
-import { FindByIdArticlesService } from './services/find-by-id-articles.service';
-import { UpdateByIdArticlesService } from './services/update-by-id-articles.service';
-import { RemoveByIdArticlesService } from './services/remove-by-id-articles.service';
+import { FindArticlesService } from './services/find-articles.service';
+import { FindArticleByIdService } from './services/find-article-by-id.service';
+import { UpdateArticleByIdService } from './services/update-article-by-id.service';
+import { RemoveArticleByIdService } from './services/remove-article-by-id.service';
 import { ArticlesRepository } from './repositories/articles.repository';
 import { ArticlesController } from './controllers/articles.controller';
 import { Article, ArticleSchema } from './schemas/article.schema';
@@ -24,10 +24,10 @@ import { SynchronizeArticlesService } from './services/synchronize-articles.serv
     ArticlesRepository,
     SpaceFlightNewsProvider,
     CreateArticlesService,
-    FindAllArticlesService,
-    FindByIdArticlesService,
-    UpdateByIdArticlesService,
-    RemoveByIdArticlesService,
+    FindArticlesService,
+    FindArticleByIdService,
+    UpdateArticleByIdService,
+    RemoveArticleByIdService,
     SynchronizeArticlesService,
   ],
   exports: [ArticlesRepository],
