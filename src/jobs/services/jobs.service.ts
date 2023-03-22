@@ -3,6 +3,7 @@ import { Cron } from '@nestjs/schedule';
 import { InjectQueue } from '@nestjs/bull';
 import { Queue } from 'bull';
 
+const everyDayAtNineOClock = '0 9 * * *';
 @Injectable()
 export class JobsService {
   private readonly logger = new Logger(JobsService.name);
@@ -12,7 +13,7 @@ export class JobsService {
     private readonly synchronizeArticles: Queue,
   ) {}
 
-  @Cron('0 9 * * *', {
+  @Cron(everyDayAtNineOClock, {
     name: 'JobsService',
     timeZone: 'America/Bahia',
   })
