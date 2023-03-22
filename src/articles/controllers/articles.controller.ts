@@ -9,33 +9,29 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateArticlesService } from '../services/create-articles.service';
-import { FindAllArticlesService } from '../services/find-all-articles.service';
-import { FindByIdArticlesService } from '../services/find-by-id-articles.service';
-import { UpdateByIdArticlesService } from '../services/update-by-id-articles.service';
-import { RemoveByIdArticlesService } from '../services/remove-by-id-articles.service';
+import { FindArticlesService } from '../services/find-articles.service';
+import { FindArticleByIdService } from '../services/find-article-by-id.service';
+import { UpdateArticleByIdService } from '../services/update-article-by-id.service';
+import { RemoveArticleByIdService } from '../services/remove-article-by-id.service';
 import { CreateArticleDto } from '../dtos/create-article.dto';
 import { UpdateArticleDto } from '../dtos/update-article.dto';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ApiPostArticles } from '../../swagger/decorators/api-post-articles.decorator';
-import { ApiGetAllArticles } from '../../swagger/decorators/api-get-all-articles.decorator';
-import { ApiGetByIdArticles } from '../../swagger/decorators/api-get-by-id-articles.decorator';
+import { ApiGetArticles } from '../../swagger/decorators/api-get-articles.decorator';
+import { ApiGetArticleById } from '../../swagger/decorators/api-get-article-by-id.decorator';
 import { ApiPutArticles } from '../../swagger/decorators/api-put-articles.decorator';
 import { ApiDeleteArticles } from '../../swagger/decorators/api-delete-articles.decorator';
 import { ArticleDocument } from '../schemas/article.schema';
-
-type RemoveResult = {
-  message: string;
-};
-
+import { RemoveResult } from '../../common/interfaces/remove-response.interface';
 @ApiTags('Articles')
 @Controller('articles')
 export class ArticlesController {
   constructor(
     private readonly createArticlesService: CreateArticlesService,
-    private readonly findAllArticlesService: FindAllArticlesService,
-    private readonly findByIdArticlesService: FindByIdArticlesService,
-    private readonly updateByIdArticlesService: UpdateByIdArticlesService,
-    private readonly removeByIdArticlesService: RemoveByIdArticlesService,
+    private readonly findArticlesService: FindArticlesService,
+    private readonly findArticleByIdService: FindArticleByIdService,
+    private readonly updateArticleByIdService: UpdateArticleByIdService,
+    private readonly removeArticleByIdService: RemoveArticleByIdService,
   ) {}
 
   @Post()
@@ -47,20 +43,20 @@ export class ArticlesController {
   }
 
   @Get()
-  @ApiGetAllArticles()
+  @ApiGetArticles()
   @ApiQuery({ name: 'page', required: false, description: 'Default: 0' })
   @ApiQuery({ name: 'pageSize', required: false, description: 'Default: 5' })
   async findAll(
     @Query('page') page: number,
     @Query('pageSize') pageSize: number,
   ): Promise<ArticleDocument[]> {
-    return this.findAllArticlesService.execute(+page, +pageSize);
+    return this.findArticlesService.execute(page, pageSize);
   }
 
   @Get(':id')
-  @ApiGetByIdArticles()
+  @ApiGetArticleById()
   async findById(@Param('id') id: string): Promise<ArticleDocument> {
-    return this.findByIdArticlesService.execute(id);
+    return this.findArticleByIdService.execute(id);
   }
 
   @Put(':id')
@@ -69,12 +65,12 @@ export class ArticlesController {
     @Param('id') id: string,
     @Body() updateArticleDto: UpdateArticleDto,
   ): Promise<ArticleDocument> {
-    return this.updateByIdArticlesService.execute(id, updateArticleDto);
+    return this.updateArticleByIdService.execute(id, updateArticleDto);
   }
 
   @Delete(':id')
   @ApiDeleteArticles()
   async removeById(@Param('id') id: string): Promise<RemoveResult> {
-    return this.removeByIdArticlesService.execute(id);
+    return this.removeArticleByIdService.execute(id);
   }
 }
