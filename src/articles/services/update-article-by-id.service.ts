@@ -1,41 +1,35 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateArticleDto } from '../dtos/update-article.dto';
 import { ArticlesRepository } from '../repositories/articles.repository';
 import { ArticleDocument } from '../schemas/article.schema';
-import { UuidUtil } from '../../common/utils/uuid.util';
+import { UniqueIdentifier } from '../../common/utils/unique-identifier.util';
 
 @Injectable()
-export class UpdateByIdArticlesService {
+export class UpdateArticleByIdService {
   constructor(
     private readonly articlesRepository: ArticlesRepository,
-    private readonly uuidUtil: UuidUtil,
+    private readonly uniqueIdentifier: UniqueIdentifier,
   ) {}
 
   async execute(
     id: string,
     updateArticleDto: UpdateArticleDto,
   ): Promise<ArticleDocument> {
-    this.isValidateId(id);
+    this.uniqueIdentifier.validate(id);
 
     const updatedArticle = await this.articlesRepository.updateById(
       id,
       updateArticleDto,
     );
 
-    if (!updatedArticle) {
-      throw new NotFoundException('Artigo não encontrado na base de dados.');
-    }
+    this.validateArticleUpdate(updatedArticle);
 
     return updatedArticle;
   }
 
-  private isValidateId(id: string): void {
-    if (!this.uuidUtil.validate(id)) {
-      throw new BadRequestException('Identificador inválido.');
+  private validateArticleUpdate(updatedArticle: ArticleDocument) {
+    if (!updatedArticle) {
+      throw new NotFoundException('Artigo não encontrado na base de dados.');
     }
   }
 }

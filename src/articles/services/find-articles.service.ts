@@ -3,7 +3,7 @@ import { ArticlesRepository } from '../repositories/articles.repository';
 import { ArticleDocument } from '../schemas/article.schema';
 
 @Injectable()
-export class FindAllArticlesService {
+export class FindArticlesService {
   constructor(private readonly articlesRepository: ArticlesRepository) {}
 
   async execute(page: number, pageSize: number): Promise<ArticleDocument[]> {

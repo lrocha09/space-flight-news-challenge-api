@@ -2,23 +2,25 @@ import { Injectable } from '@nestjs/common';
 import { CreateArticleDto } from '../dtos/create-article.dto';
 import { ArticlesRepository } from '../repositories/articles.repository';
 import { ArticleDocument } from '../schemas/article.schema';
-import { UuidUtil } from '../../common/utils/uuid.util';
+import { UniqueIdentifier } from '../../common/utils/unique-identifier.util';
 
 @Injectable()
 export class CreateArticlesService {
   constructor(
     private readonly articlesRepository: ArticlesRepository,
-    private readonly uuidUtil: UuidUtil,
+    private readonly uniqueIdentifier: UniqueIdentifier,
   ) {}
 
   async execute(createArticleDto: CreateArticleDto): Promise<ArticleDocument> {
-    const articleDtoTransformed = this.transformBody(createArticleDto);
+    const article = this.enrichArticleWithUniqueId(createArticleDto);
 
-    return this.articlesRepository.create(articleDtoTransformed);
+    return this.articlesRepository.create(article);
   }
 
-  private transformBody(createArticleDto: CreateArticleDto): CreateArticleDto {
-    createArticleDto.id = this.uuidUtil.generate();
+  private enrichArticleWithUniqueId(
+    createArticleDto: CreateArticleDto,
+  ): CreateArticleDto {
+    createArticleDto.id = this.uniqueIdentifier.generate();
 
     return createArticleDto;
   }
