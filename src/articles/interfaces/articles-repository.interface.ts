@@ -3,7 +3,7 @@ import { CreateArticleDto } from '../dtos/create-article.dto';
 import { UpdateArticleDto } from '../dtos/update-article.dto';
 import { IRemoveResponse } from '../../common/interfaces/remove-response.interface';
 
-export interface IClinicsRepository {
+export interface IArticlesRepository {
   create(createArticleDto: CreateArticleDto): Promise<ArticleDocument>;
   findAll(fields?: string): Promise<ArticleDocument[]>;
   findById(id: string): Promise<ArticleDocument | null>;
