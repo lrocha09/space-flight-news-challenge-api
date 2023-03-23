@@ -1,73 +1,156 @@
+<table align="center"><tr><td align="center" width="9999">
+<img src="https://spaceflightnewsapi.net/img/SNAPI_logo.png" align="center" width="200px" alt="Project icon">
+
+<h4>API Space Flight News</h4>
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lrocha09/space-flight-news-challenge-api?color=1b96f3">
+
+  <a href="https://github.com/lrocha09" target="_blank" rel="noopener noreferrer">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-lucas%20rocha-1b96f3">
+  </a>
+  
+   <img alt="Repository size" src="https://img.shields.io/github/repo-size/lrocha09/space-flight-news-challenge-api?color=1b96f3">
+
+  <a href="https://github.com/lrocha09/space-flight-news-challenge-api/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lrocha09/space-flight-news-challenge-api?color=1b96f3">
+  </a>
+
+
+  <a href="https://github.com/lrocha09/space-flight-news-challenge-api/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/lrocha09/space-flight-news-challenge-api?color=1b96f3">
+  </a>
+
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">
+  <a href="#descrição-do-projeto">Descrição do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#executando-o-projeto">Executando o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#variáveis-de-ambiente">Variáveis de Ambiente</a>&nbsp;&nbsp;&nbsp;
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+</td></tr>
+</table>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Descrição do Projeto
 
-## Installation
+A [Space Flight News](https://www.spaceflightnewsapi.net/) fornece as melhores informações de notícias relacionadas a voos espaciais. Através dessa API poderemos criar nossa extensão da [Space Flight News](https://www.spaceflightnewsapi.net/), criando, editando, removendo e visualizando novos artigos, além de atualizar nossa base de dados automaticamente, utilizando rotinas.
+
+## Tecnologias
+
+Tecnologias utilizadas para o desenvolvimeno da API:
+
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [NestJS](https://nestjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [Redis](https://redis.io/)
+- [Bull](https://github.com/OptimalBits/bull/)
+- [Npm](https://www.npmjs.com/)
+- [Swagger](https://swagger.io/)
+- [Axios](https://axios-http.com/)
+- [Jest](https://jestjs.io/)
+- [SuperTest](https://www.npmjs.com/package/supertest/)
+- [Uuid v4](https://github.com/thenativeweb/uuidv4/)
+
+## Executando o Projeto
+
+### Requisitos Necessários
+
+- [Node.js](https://nodejs.org/en/) (Foi utilizada a versão 18.12.1 durante o desenvolvimento)
+- [Npm](https://www.npmjs.com/) ou [Yarn](https://classic.yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/) e [Redis](https://redis.io/) instalado em sua máquina
+
+> Obs.: Recomendado utilizar o docker, a URL de conexão pode ser configurada através do .env.
+
+**Clone o projeto e acesse a pasta:**
 
 ```bash
-$ npm install
+$ git clone https://gitlab.com/lrocha09/space-flight-news-challenge-api && cd space-flight-news-challenge-api
 ```
 
-## Running the app
+**Iniciar o servidor da API:**
 
 ```bash
-# development
+# Instale todas as dependências necessárias:
+$ npm install
+
+# Para iniciar o servidor da API:
 $ npm run start
 
-# watch mode
+# Caso queira iniciar o servidor da API em modo assistido:
 $ npm run start:dev
 
-# production mode
+# Para iniciar o servidor da API em produção:
 $ npm run start:prod
 ```
 
-## Test
+**Ambiente docker:**
 
 ```bash
-# unit tests
+#  Cria o nosso contêiner, prepara e inicia o ambiente:
+$ make up
+
+# Interrompe e remove todos os contêineres:
+$ make down
+
+# Para vizualizar os logs dos contêineres:
+$ make logs
+```
+
+**Executar testes:**
+
+```bash
+# Para executar todos os testes unitários:
 $ npm run test
 
-# e2e tests
+# Para executar todos os testes e2e:
 $ npm run test:e2e
 
-# test coverage
+# Para executar um teste específico do projeto:
+$ npm run test:e2e "nome do arquivo"
+
+# Para executar todos os testes coverage:
 $ npm run test:cov
 ```
 
-## Support
+### Documentação da API
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Para ter acesso a documentação do projeto, contendo todas as informações para utilizar os
+endpoints da API, é necessário utilizar como no exemplo abaixo, lembrando que o servidor
+da API necessita estar inicializado.
 
-## Stay in touch
+> Obs.: É possível alterar o padrão de rota "/docs" para algum desejado, para isso temos a variável de ambiente "APP_DOCS_PATH".
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+# Documentação swagger.
+Ex.: http://localhost:3333/docs ou http://www.dominio-api.com/docs
+```
 
-## License
+## Variáveis de Ambiente
 
-Nest is [MIT licensed](LICENSE).
+**Variáveis de ambiente presentes no .env do projeto:**
+
+```bash
+# Porta que o servidor do Node.js utilizará.
+SERVER_PORT=3333
+
+# URL de acesso ao banco de dados do MongoDB.
+DB_URL=mongodb://localhost/space-flight-news-api
+
+# Variáveis para configuração de documentação do Swagger.
+APP_EXPOSE_DOCS=true
+APP_NAME=Space Flight News API
+APP_VERSION=1.0
+APP_DOCS_PATH=docs
+
+# Variáveis para configuração do Redis.
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASS=redis
+
+# URL base para efetuar consultas a API da Spaceflight News.
+BASE_URL_SPACEFLIGHT=https://api.spaceflightnewsapi.net/v3
+```
